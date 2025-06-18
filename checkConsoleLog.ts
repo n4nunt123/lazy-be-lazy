@@ -21,22 +21,26 @@ const searchConsoleLogs = async (filePath: string): Promise<void> => {
 };
 
 const fullScanDirectory = (dir: string): void => {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
-
-    if (entry.isDirectory()) {
-      if (!EXCLUDE_DIRS.includes(entry.name)) fullScanDirectory(fullPath);
-    } else {
-      if (entry.name.endsWith('.js') || entry.name.endsWith('.ts')) {
-        try {
-          searchConsoleLogs(fullPath)
-        } catch (error) {
-          console.error(`Error reading file ${fullPath}:`, error)
+  try {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+  
+      if (entry.isDirectory()) {
+        if (!EXCLUDE_DIRS.includes(entry.name)) fullScanDirectory(fullPath);
+      } else {
+        if (entry.name.endsWith('.js') || entry.name.endsWith('.ts')) {
+          try {
+            searchConsoleLogs(fullPath)
+          } catch (error) {
+            console.error(`Error reading file ${fullPath}:`, error)
+          }
         }
       }
     }
+  } catch (error) {
+    console.error(`Error accessing directory ${dir}:`, error);
+    return;
   }
 };
 
