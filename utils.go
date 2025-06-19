@@ -39,3 +39,7 @@ func isArray(val interface{}) bool {
 func isMap(val interface{}) bool {
 	return isNotEmpty(val) && reflect.TypeOf(val).Kind() == reflect.Map
 }
+
+func isObject(val interface{}) bool {
+	return isMap(val) || reflect.TypeOf(val).Kind() == reflect.Struct
+}
