@@ -43,3 +43,13 @@ func isMap(val interface{}) bool {
 func isObject(val interface{}) bool {
 	return isMap(val) || reflect.TypeOf(val).Kind() == reflect.Struct
 }
+
+func isEqual(val1, val2 interface{}) bool {
+	if isEmpty(val1) && isEmpty(val2) {
+		return true
+	}
+	if isEmpty(val1) || isEmpty(val2) {
+		return false
+	}
+	return reflect.DeepEqual(val1, val2)
+}
