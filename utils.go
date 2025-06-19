@@ -26,3 +26,8 @@ func isNumber(val interface{}) bool {
 			return false
 	}
 }
+
+func isBool(val interface{}) bool {
+	_, ok := val.(bool)
+	return isNotEmpty(val) && ok
+}
