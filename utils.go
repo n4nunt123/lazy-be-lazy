@@ -31,3 +31,7 @@ func isBool(val interface{}) bool {
 	_, ok := val.(bool)
 	return isNotEmpty(val) && ok
 }
+
+func isArray(val interface{}) bool {
+	return isNotEmpty(val) && reflect.TypeOf(val).Kind() == reflect.Slice
+}
