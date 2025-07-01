@@ -62,3 +62,12 @@ func isDigit(val interface{}) bool {
 	digitPattern := regexp.MustCompile(`^\d+$`)
 	return digitPattern.MatchString(str)
 }
+
+func isInteger(val interface{}) bool {
+	switch val.(type) {
+		case int, int8, int16, int32, int64:
+			return true
+		default:
+			return false
+	}
+}
