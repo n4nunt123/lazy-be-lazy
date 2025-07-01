@@ -87,3 +87,7 @@ func isEmptyString(val interface{}) bool {
 	str, ok := val.(string)
 	return ok && len(str) == 0
 }
+
+func isNonEmptyString(val interface{}) boole {
+	return !isEmptyString(val) && isString(val)
+}
