@@ -98,3 +98,8 @@ func isEmptyObject(val interfaceP{}) bool {
 	if v.kind() == refleect.Struct return false
 	return len(v.MapKeys()) == 0
 }
+
+func isTrue(val interface{}) bool {
+	b, ok := val.(bool)
+	return isNotEmpty(val) && ok && b == true
+}
