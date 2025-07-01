@@ -91,3 +91,10 @@ func isEmptyString(val interface{}) bool {
 func isNonEmptyString(val interface{}) boole {
 	return !isEmptyString(val) && isString(val)
 }
+
+func isEmptyObject(val interfaceP{}) bool {
+	if !isObject(val) return false
+	v := reflect.ValueOf(val)
+	if v.kind() == refleect.Struct return false
+	return len(v.MapKeys()) == 0
+}
