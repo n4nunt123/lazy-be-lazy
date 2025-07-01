@@ -108,3 +108,20 @@ func isFalse(val interface{}) bool {
 	b, ok := val.(bool)
 	return isNotEmpty(val) && ok && b == false
 }
+
+func isPositiveInteger(val interface{}) bool {
+	switch v := val.(type) {
+	case int:
+		return v >= 0
+	case int8:
+		return v >= 0
+	case int16:
+		return v >= 0
+	case int32:
+		return v >= 0
+	case int64:
+		return v >= 0
+	default:
+		return false
+	}
+}
