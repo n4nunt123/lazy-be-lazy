@@ -82,3 +82,8 @@ func isEqual(val1 interface{}, val2 interface{}) bool {
 	}
 	return reflect.DeepEqual(val1, val2)
 }
+
+func isEmptyString(val interface{}) bool {
+	str, ok := val.(string)
+	return ok && len(str) == 0
+}
