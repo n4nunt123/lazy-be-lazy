@@ -75,3 +75,10 @@ func isInteger(val interface{}) bool {
 func isFunction(val interface{}) bool {
 	return reflect.TypeOf(val).Kind() == reflect.Func
 }
+
+func isEqual(val1 interface{}, val2 interface{}) bool {
+	if isEmpty(val1) || isEmpty(val2) {
+		return false
+	}
+	return reflect.DeepEqual(val1, val2)
+}
