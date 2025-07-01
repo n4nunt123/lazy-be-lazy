@@ -103,3 +103,8 @@ func isTrue(val interface{}) bool {
 	b, ok := val.(bool)
 	return isNotEmpty(val) && ok && b == true
 }
+
+func isFalse(val interface{}) bool {
+	b, ok := val.(bool)
+	return isNotEmpty(val) && ok && b == false
+}
