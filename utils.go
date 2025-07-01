@@ -71,3 +71,7 @@ func isInteger(val interface{}) bool {
 			return false
 	}
 }
+
+func isFunction(val interface{}) bool {
+	return reflect.TypeOf(val).Kind() == reflect.Func
+}
