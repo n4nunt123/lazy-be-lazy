@@ -53,3 +53,12 @@ func isEqual(val1, val2 interface{}) bool {
 	}
 	return reflect.DeepEqual(val1, val2)
 }
+
+func isDigit(val interface{}) bool {
+	str, ok := val.(string)
+	if !isPresent(val) || !ok {
+		return false
+	}
+	digitPattern := regexp.MustCompile(`^\d+$`)
+	return digitPattern.MatchString(str)
+}
